@@ -5,6 +5,7 @@ function choose(){
 	shuffle_and_pick(list)
 }
 
+
 function shuffle_and_pick(list){
 	n = list.length
 	iter_cnt = Math.floor((Math.random() * n));
