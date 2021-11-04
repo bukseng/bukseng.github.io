@@ -18,6 +18,7 @@ function generate_random_color(){
 window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+	draw_circles();
 	draw_lines();
 });
 
