@@ -18,11 +18,14 @@ function generate_random_color(){
 window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-	draw_circles();
-	draw_lines();
+	draw();
 });
 
 
+function load_background(){
+	ctx.fillStyle = 'rgb(0,0,0)';
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
 
 function draw_line(){
 	let is_vertical = Math.floor(Math.random() * 2);
@@ -54,11 +57,6 @@ function draw_line(){
 	ctx.stroke();
 }
 
-function draw_lines(){
-	for(let i = 0; i < 10; i++){
-		draw_line();
-	}
-}
 
 function draw_circle(){
 	let is_main = Math.floor(Math.random() * 2);
@@ -74,11 +72,14 @@ function draw_circle(){
 	ctx.fill();
 }
 
-function draw_circles(){
+
+function draw(){
+	load_background();
 	for(let i = 0; i < 10; i++){
 		draw_circle();
+		draw_line();
 	}
+
 }
 
-draw_circles();
-draw_lines();
+draw();
