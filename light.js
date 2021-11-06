@@ -19,7 +19,7 @@ function draw_lines(){
 	for(let i = 0; i < 1000; i++){
 		let x = Math.random() * canvas.width;
 		let y = Math.random() * canvas.height;	
-		for(let j = 0; j < 1000; j++){
+		for(let j = 0; j < 500; j++){
 			ctx.beginPath();
 			ctx.moveTo(0, 0);
 			ctx.lineTo(x,y);
