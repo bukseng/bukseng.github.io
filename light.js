@@ -3,17 +3,6 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const main_color = generate_random_color();
-const sub_color = generate_random_color();
-
-
-function generate_random_color(){
-	let color = []
-	for(let i = 0; i < 3; i++){
-		color.push(Math.floor(Math.random() * 254) + 1);
-	}
-	return color;
-}
 
 window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
@@ -41,8 +30,6 @@ function draw_lines(){
 			y += 3;
 		}		
 	}
-	
-	
 }
 
 function draw(){
