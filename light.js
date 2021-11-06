@@ -33,8 +33,8 @@ function draw_lines(){
 }
 
 function draw(){
-	load_background()
-	draw_lines()
+	load_background();
+	draw_lines();
 }
 
-draw()
+draw();
