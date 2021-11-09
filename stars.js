@@ -3,7 +3,6 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const max_size = 17;
 
 window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
@@ -24,12 +23,10 @@ function generate_random_color(){
 	return color;
 }
 
-
 function draw_star(ax, ay, radius){
 	let color = generate_random_color();
 	let alpha = Math.floor(Math.random() * 11) / 1000;
 	let line_width = radius / 17;
-
 
 	for(let i = 0; i <= 360; i++){
 		let bx = radius * Math.cos(i) + ax;
