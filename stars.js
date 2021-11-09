@@ -24,10 +24,12 @@ function generate_random_color(){
 	return color;
 }
 
+
 function draw_star(ax, ay, radius){
 	let color = generate_random_color();
 	let alpha = Math.floor(Math.random() * 11) / 1000;
 	let line_width = radius / 17;
+
 
 	for(let i = 0; i <= 360; i++){
 		let bx = radius * Math.cos(i) + ax;
@@ -44,7 +46,7 @@ function draw_star(ax, ay, radius){
 function draw(){
 	load_background();
 	
-	for(let i = 0; i < 250; i++){
+	for(let i = 0; i < 500; i++){
 		let ax = Math.random() * canvas.width;
 		let ay = Math.random() * canvas.height;
 		let radius = Math.random() * 50;
