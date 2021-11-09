@@ -24,54 +24,31 @@ function generate_random_color(){
 	return color;
 }
 
-function draw_star(size){	
-	let ax = Math.random() * canvas.width;
-	let ay = Math.random() * canvas.height;	
-	let star_color = generate_random_color();
-		
-	for(let i = 0; i < 45; i++){	
-		for(let j = 0; j < 4; j++){
-			let bx = Math.random() * size;
-			let by = Math.random() * size;
-			if (j % 2 == 0){
-				if(j < 2){
-					bx = ax + bx * -1;
-					by = ay + by * 1;				
-				}else{
-					bx = ax + bx * 1;
-					by = ay + by * 1;				
-				}
-			}else{
-				if(j < 2){
-					bx = ax + bx * -1;
-					by = ay + by * -1;
-				}else{
-					bx = ax + bx * 1;
-					by = ay + by * -1;				
-				}
-			}
-			ctx.beginPath();
-			ctx.moveTo(ax,ay);
-			ctx.lineTo(bx,by);
-			ctx.lineWidth = .017;
-			ctx.strokeStyle = 'rgba(255,255,255,0.24)';
-			ctx.stroke();
-			if(size > max_size){
-				ctx.beginPath();
-				ctx.moveTo(ax,ay);
-				ctx.lineTo(bx,by);
-				ctx.lineWidth = .017;
-				ctx.strokeStyle = 'rgba(' + star_color[0] + ',' + star_color[1] + ',' + star_color[2] + '.24)';
-				ctx.stroke();				
-			}
-		}
-	}		
+function draw_star(ax, ay, radius){
+	let color = generate_random_color();
+	let alpha = Math.floor(Math.random() * 11) / 1000;
+	let line_width = radius / 17;
+
+	for(let i = 0; i <= 360; i++){
+		let bx = radius * Math.cos(i) + ax;
+		let by = radius * Math.sin(i) + ay;
+		ctx.beginPath();
+		ctx.moveTo(ax,ay);
+		ctx.lineTo(bx, by);
+		ctx.lineWidth = line_width;
+		ctx.strokeStyle = 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + alpha + ')';
+		ctx.stroke();		
+	}
 }
 
 function draw(){
 	load_background();
-	for(let i = 0; i < 500; i++){
-		draw_star(Math.random() * max_size + 2);
+	
+	for(let i = 0; i < 250; i++){
+		let ax = Math.random() * canvas.width;
+		let ay = Math.random() * canvas.height;
+		let radius = Math.random() * 50;
+		draw_star(ax, ay, radius);
 	}
 }
 
