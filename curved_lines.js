@@ -31,23 +31,23 @@ function load_background(){
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function draw_curved_lines(){
-	let ax = Math.random() * canvas.width;
-	let ay = Math.random() * canvas.height;
+function draw_curved_lines(ax, ay){
 	let bx = Math.random() * canvas.width;
 	let by = Math.random() * canvas.height;
 	let cx = Math.random() * canvas.width;
 	let cy = Math.random() * canvas.height;
-
 	
-	ctx.beginPath();
+	let last_point = [cx, cy];
+	
+	
 	ctx.lineWidth = 7;
 	for(let i = 0; i < COLOR_COUNT; i++){
+		ctx.beginPath();
 		ctx.moveTo(ax, ay);
 		ctx.bezierCurveTo(ax, ay, bx, by, cx, cy);
 		ctx.strokeStyle = 'rgb(' + colors[i][0] + ',' + colors[i][1] + ',' + colors[i][2] + ')';
 		ctx.stroke();
-		ctx.lineWidth -= 1;
+		ctx.lineWidth -= 0.5;
 		ax += 3;
 		ay += 3;
 		bx += 3;
@@ -56,13 +56,18 @@ function draw_curved_lines(){
 		cy += 3;
 	}	
 	
+	return last_point;
 }
 
 
 function draw(){
 	load_background();
-	for(let i = 0; i < 100; i++){
-		draw_curved_lines();
+	let ax = Math.random() * canvas.width;
+	let ay = Math.random() * canvas.height;
+	for(let i = 0; i < 17; i++){
+		let last_point = draw_curved_lines(ax, ay);
+		ax = last_point[0];
+		ay = last_point[1];
 	}
 }
 
